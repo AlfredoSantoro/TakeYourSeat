@@ -9,6 +9,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {SignUpComponent} from './component/sign-up/sign-up.component';
 import {MenuComponent} from "./component/menu/menu.component";
 import {LoginComponent} from "./component/login/login.component";
+import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,13 @@ import {LoginComponent} from "./component/login/login.component";
     LoginComponent
   ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
