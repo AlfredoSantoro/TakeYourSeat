@@ -8,14 +8,14 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {SignUpComponent} from './component/sign-up/sign-up.component';
 import {MenuComponent} from "./component/menu/menu.component";
-import {HomeComponent} from "./component/home/home/home.component";
+import {LoginComponent} from "./component/login/login.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     SignUpComponent,
     MenuComponent,
-    HomeComponent
+    LoginComponent
   ],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],

@@ -234,3 +234,12 @@
     --ion-card-background: #1e1e1e;
   }
 }
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  -webkit-transform: translate(-49%, -49%);
+  transform: translate(-49%, -49%);
+  width: 90%;
+}
