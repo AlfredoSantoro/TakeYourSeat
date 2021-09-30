@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {CONSTANTS} from "../../constants";
 
 @Component({
   selector: 'app-login',
@@ -8,14 +8,11 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  readonly loginWelcome = CONSTANTS.LOGIN_WELCOME
+  readonly toolbarPrefix = CONSTANTS.APP_TITLE
+
+  constructor() { }
 
   ngOnInit() {}
-
-
-  signUp(): void {
-    console.log("sign up");
-    this.router.navigateByUrl("sign-up");
-  }
 
 }

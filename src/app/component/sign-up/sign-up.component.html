@@ -1,23 +1,37 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Sign up</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{toolbarPrefix}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="center">
+
+    <ion-title class="text-align-center">
+      Sign-up
+    </ion-title>
+
   <form>
     <ion-item lines="full">
-      <ion-label position="floating">First name</ion-label>
+      <ion-label position="floating">Name</ion-label>
       <ion-input type="text" required></ion-input>
     </ion-item>
 
     <ion-item lines="full">
-      <ion-label position="floating">Last name</ion-label>
+      <ion-label position="floating">Surname</ion-label>
       <ion-input type="text" required></ion-input>
     </ion-item>
 
     <ion-item lines="full">
       <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Username</ion-label>
       <ion-input type="text" required></ion-input>
     </ion-item>
 
@@ -32,4 +46,5 @@
       </ion-col>
     </ion-row>
   </form>
+  </div>
 </ion-content>

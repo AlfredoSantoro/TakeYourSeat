@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {CONSTANTS} from "../../constants";
 
 @Component({
   selector: 'app-sign-up',
@@ -6,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
+
+  readonly toolbarPrefix = CONSTANTS.APP_TITLE
 
   constructor() { }
 

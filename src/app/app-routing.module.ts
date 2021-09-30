@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {SignUpComponent} from "./component/sign-up/sign-up.component";
-import {AppComponent} from "./app.component";
+import {LoginComponent} from "./component/login/login.component";
 
 const routes: Routes = [
   {
@@ -14,7 +14,7 @@ const routes: Routes = [
     loadChildren: () => import('./component/folder/folder.module').then(m => m.FolderPageModule)
   },
   { path: 'sign-up', component: SignUpComponent },
-  { path: 'home', component: AppComponent }
+  { path: 'home', component: LoginComponent }
 ];
 
 @NgModule({

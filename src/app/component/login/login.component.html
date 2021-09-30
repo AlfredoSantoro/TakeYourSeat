@@ -1,18 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Login</ion-title>
+    <ion-title>{{toolbarPrefix}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="center">
 
+    <ion-label>
+      {{loginWelcome}}
+    </ion-label>
+
     <div class="heading-column-lr">
       <h1 class="big-heading">Login</h1>
     </div>
-    <ion-label>
-      Lorem ipsum is simply dummy text of the printing and typesetting industry.
-    </ion-label>
 
     <ion-item class="transparent">
       <ion-icon class="icon-small" name="person-outline"></ion-icon>
@@ -30,7 +31,7 @@
     <ion-button color="primary" shape="round" fill="solid" size="large" expand="block">
       LOGIN
     </ion-button>
-    <ion-label class="ion-text-center">Don't have Account? <span class="link-sign-up" (click)="signUp()">Sign Up</span>
+    <ion-label class="ion-text-center">Don't have Account? <span class="link-sign-up" routerLink="/sign-up">Sign Up</span>
     </ion-label>
 
   </div>
