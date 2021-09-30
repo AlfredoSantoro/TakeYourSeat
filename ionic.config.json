@@ -1,0 +1,7 @@
+{
+  "name": "SESALab",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
