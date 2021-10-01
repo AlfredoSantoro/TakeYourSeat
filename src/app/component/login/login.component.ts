@@ -18,6 +18,11 @@ export class LoginComponent {
   constructor(private activatedRoute: ActivatedRoute,
               private toastController: ToastController) { }
 
+  login() {
+
+  }
+
+
   ionViewWillEnter() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
       this.successfulSignUpMessage = paramMap.get('successfulSignUpMessage')

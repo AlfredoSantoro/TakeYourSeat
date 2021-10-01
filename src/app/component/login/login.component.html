@@ -25,10 +25,9 @@
       <ion-input placeholder="Password" type="password"></ion-input>
     </ion-item>
 
-
     <div class="linespace"></div>
 
-    <ion-button color="primary" shape="round" fill="solid" expand="block">
+    <ion-button (click)="login()" color="primary" shape="round" fill="solid" expand="block">
       Login
     </ion-button>
     <ion-label class="ion-text-center">Don't have Account? <span class="link-sign-up" routerLink="/sign-up">Sign Up</span>
