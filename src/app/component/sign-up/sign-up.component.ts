@@ -1,17 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {CONSTANTS} from "../../constants";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {SignUpService} from "../../service/signup/sign-up.service";
 import {CreateAccount} from "../../interface/CreateAccount";
-import {ToastController} from "@ionic/angular";
-import {finalize} from "rxjs/operators";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss'],
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent {
+
+  readonly successfulSignUpMessage = "Successful sign up"
 
   formDataModel = new FormGroup( {
       name: new FormControl('', Validators.required),
@@ -24,16 +25,13 @@ export class SignUpComponent implements OnInit {
 
   readonly toolbarPrefix = CONSTANTS.APP_TITLE
 
-  pauseSpinner = true;
-  hidden = false;
+  hidden = true;
 
   constructor(private signUpService: SignUpService,
-              private toastController: ToastController) { }
-
-  ngOnInit() {}
+              private router: Router) { }
 
   submit() {
-    this.pauseSpinner = false;
+    this.hidden = false;
     const createAccount : CreateAccount = {
       name: this.formDataModel.get('name').value,
       surname: this.formDataModel.get('surname').value,
@@ -43,7 +41,6 @@ export class SignUpComponent implements OnInit {
       accountType: 'USER'
     }
     this.signUpService.signUp(createAccount)
-      .pipe(finalize(() => { this.hidden = true }))
       .subscribe(
         () => this.onSuccess(),
         (error) => this.onError(error)
@@ -51,18 +48,16 @@ export class SignUpComponent implements OnInit {
   }
 
   onSuccess(): void {
-    this.presentToast();
+    this.router.navigate(['/home', { successfulSignUpMessage: this.successfulSignUpMessage }]);
   }
 
   onError(err: string): void {
     console.log(`sign up error ${err}`)
   }
 
-  async presentToast() {
-    const toast = await this.toastController.create({
-      message: 'Successful registration',
-      duration: 1500
-    });
-    await toast.present();
+  ionViewDidLeave(): void {
+    console.log('ionViewDidLeave signup')
+    this.formDataModel.reset();
+    this.hidden = true;
   }
 }

@@ -14,7 +14,8 @@ const routes: Routes = [
     loadChildren: () => import('./component/folder/folder.module').then(m => m.FolderPageModule)
   },
   { path: 'sign-up', component: SignUpComponent },
-  { path: 'home', component: LoginComponent }
+  { path: 'home', component: LoginComponent },
+  { path: 'home/:successfulSignUpMessage', component: LoginComponent }
 ];
 
 @NgModule({
