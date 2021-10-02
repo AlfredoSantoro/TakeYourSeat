@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
 import {SignUpComponent} from "./component/sign-up/sign-up.component";
 import {LoginComponent} from "./component/login/login.component";
-import {DashboardComponent} from "./component/dashboard/dashboard.component";
+import {HomepageComponent} from "./component/homepage/homepage.component";
 
 const routes: Routes = [
   {
@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'homepage', component: HomepageComponent },
   { path: 'login/:successfulSignUpMessage', component: LoginComponent }
 ];
 

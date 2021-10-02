@@ -4,6 +4,7 @@ export const CONSTANTS = {
   ENVIRONMENT: environment,
 
   APP_TITLE: "SESA Lab",
+  HOME_PAGE: "HOME",
 
   LOGIN_WELCOME: "Welcome to the SESA Lab app, which is essential for using the SESA lab at the University of Salerno.",
 

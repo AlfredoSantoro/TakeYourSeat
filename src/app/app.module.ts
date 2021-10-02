@@ -11,7 +11,7 @@ import {LoginComponent} from "./component/login/login.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {MenuComponent} from "./component/menu/menu.component";
-import {DashboardComponent} from "./component/dashboard/dashboard.component";
+import {HomepageComponent} from "./component/homepage/homepage.component";
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import {DashboardComponent} from "./component/dashboard/dashboard.component";
     SignUpComponent,
     LoginComponent,
     MenuComponent,
-    DashboardComponent
+    HomepageComponent
   ],
   entryComponents: [],
   imports: [

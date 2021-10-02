@@ -3,7 +3,7 @@ import {CONSTANTS} from "../../constants";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {SignUpService} from "../../service/signup/sign-up.service";
 import {CreateAccount} from "../../interface/CreateAccount";
-import {Router} from "@angular/router";
+import {NavController} from "@ionic/angular";
 
 @Component({
   selector: 'app-sign-up',
@@ -28,7 +28,7 @@ export class SignUpComponent {
   hidden = true;
 
   constructor(private signUpService: SignUpService,
-              private router: Router) { }
+              private navigateRoot: NavController) { }
 
   submit() {
     this.hidden = false;
@@ -48,16 +48,10 @@ export class SignUpComponent {
   }
 
   onSuccess(): void {
-    this.router.navigate(['/login', { successfulSignUpMessage: this.successfulSignUpMessage }]);
+    this.navigateRoot.navigateRoot(['/login', { successfulSignUpMessage: this.successfulSignUpMessage }])
   }
 
   onError(err: string): void {
     console.log(`sign up error ${JSON.stringify(err)}`)
-  }
-
-  ionViewDidLeave(): void {
-    console.log('ionViewDidLeave signup')
-    this.formDataModel.reset();
-    this.hidden = true;
   }
 }

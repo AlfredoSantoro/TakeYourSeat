@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CONSTANTS} from "../../constants";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ToastController} from "@ionic/angular";
@@ -12,7 +12,7 @@ import {UserLogin} from "../../interface/UserLogin";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   formDataModel = new FormGroup( {
       username: new FormControl('', Validators.required),
@@ -48,24 +48,14 @@ export class LoginComponent {
 
   onSuccessLogin(response: ResponseUserLogin): void {
     console.log(`Successful login with response > ${JSON.stringify(response)}`)
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/homepage']);
   }
 
   onErrorLogin(error: any): void {
     console.log(`login error ${JSON.stringify(error)}`)
   }
 
-  onChangeUsername(event: any): void {
-    this.username = event.detail.value
-  }
-
-  onChangePassword(event: any): void {
-    this.password = event.detail.value
-  }
-
-  ionViewWillEnter() {
-    this.formDataModel.reset();
-    this.hidden = true;
+  ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
       this.successfulSignUpMessage = paramMap.get('successfulSignUpMessage')
       console.log(this.successfulSignUpMessage)
