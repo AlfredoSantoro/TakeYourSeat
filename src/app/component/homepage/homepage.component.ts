@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {CONSTANTS} from "../../constants";
 
 @Component({
@@ -6,12 +6,10 @@ import {CONSTANTS} from "../../constants";
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss'],
 })
-export class HomepageComponent implements OnInit {
+export class HomepageComponent {
 
   readonly toolbarPrefix = CONSTANTS.APP_TITLE + ' ' + CONSTANTS.HOME_PAGE
 
   constructor() { }
-
-  ngOnInit() {}
 
 }

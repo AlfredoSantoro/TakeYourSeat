@@ -6,6 +6,7 @@ import {LoginService} from "../../service/login/login.service";
 import {ResponseUserLogin} from "../../interface/ResponseUserLogin";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserLogin} from "../../interface/UserLogin";
+import {StorageService} from "../../service/storage/storage.service";
 
 @Component({
   selector: 'app-login',
@@ -29,7 +30,8 @@ export class LoginComponent implements OnInit {
 
   successfulSignUpMessage = null
 
-  constructor(private activatedRoute: ActivatedRoute,
+  constructor(private storageService: StorageService,
+              private activatedRoute: ActivatedRoute,
               private router: Router,
               private loginService: LoginService,
               private toastController: ToastController) { }
@@ -47,6 +49,12 @@ export class LoginComponent implements OnInit {
   }
 
   onSuccessLogin(response: ResponseUserLogin): void {
+    this.storageService.set('token', response.token)
+    this.storageService.set('username', response.username)
+    this.storageService.set('accountType', response.accountType)
+    this.storageService.get('token').then(function (value: any) {
+      console.log(`token value is -> ${value}`)
+    })
     console.log(`Successful login with response > ${JSON.stringify(response)}`)
     this.router.navigate(['/homepage']);
   }

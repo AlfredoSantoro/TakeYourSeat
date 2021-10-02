@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
-import {MenuController} from "@ionic/angular";
+import {StorageService} from "../../service/storage/storage.service";
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
-export class MenuComponent {
+export class MenuComponent{
+
+  menuTitle: string = ''
 
   public appPages = [
     { title: 'Home', url: '', icon: 'library' },
@@ -16,6 +18,12 @@ export class MenuComponent {
     { title: 'Logout', url: '', icon: 'log-out' },
   ];
 
-  constructor(private menuController: MenuController) { }
+  constructor(private storageService: StorageService) { }
+
+  ionDidOpen(): void {
+    this.storageService.get('username').then(r => {
+      this.menuTitle = `Hello ${r}`;
+    })
+  }
 
 }

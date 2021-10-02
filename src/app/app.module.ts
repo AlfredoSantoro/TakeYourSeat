@@ -12,6 +12,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {MenuComponent} from "./component/menu/menu.component";
 import {HomepageComponent} from "./component/homepage/homepage.component";
+import {IonicStorageModule} from "@ionic/storage-angular";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {HomepageComponent} from "./component/homepage/homepage.component";
     IonicModule.forRoot(),
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
