@@ -1,24 +1,21 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
+import {MenuController} from "@ionic/angular";
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent {
 
   public appPages = [
-    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
+    { title: 'Home', url: '', icon: 'library' },
+    { title: 'Reservations', url: '', icon: 'bookmark' },
+    { title: 'Permissions', url: '', icon: 'accessibility' },
+    { title: 'Profile', url: '', icon: 'person-circle' },
+    { title: 'Logout', url: '', icon: 'log-out' },
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
-  constructor() { }
-
-  ngOnInit() {}
+  constructor(private menuController: MenuController) { }
 
 }

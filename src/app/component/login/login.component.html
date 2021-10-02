@@ -15,23 +15,25 @@
       <h1 class="big-heading">Login</h1>
     </div>
 
-    <ion-item class="transparent">
-      <ion-icon class="icon-small" name="person-outline"></ion-icon>
-      <ion-input placeholder="Username" type="text"></ion-input>
-    </ion-item>
+    <form [formGroup]="formDataModel">
+      <ion-item class="transparent">
+        <ion-icon class="icon-small" name="person-outline"></ion-icon>
+        <ion-input placeholder="Username" formControlName="username" type="text"></ion-input>
+      </ion-item>
 
-    <ion-item class="transparent">
-      <ion-icon class="icon-small" name="lock-closed-outline"></ion-icon>
-      <ion-input placeholder="Password" type="password"></ion-input>
-    </ion-item>
+      <ion-item class="transparent">
+        <ion-icon class="icon-small" name="lock-closed-outline"></ion-icon>
+        <ion-input placeholder="Password" formControlName="password"  type="password"></ion-input>
+      </ion-item>
 
-    <div class="linespace"></div>
+      <div class="linespace"></div>
 
-    <ion-button (click)="login()" color="primary" shape="round" fill="solid" expand="block">
-      Login
-    </ion-button>
+      <ion-button [disabled]="formDataModel.invalid" (click)="login()" type="submit" color="primary" shape="round" fill="solid" expand="block">
+        Login <ion-spinner [hidden]="hidden"></ion-spinner>
+      </ion-button>
+    </form>
+
     <ion-label class="ion-text-center">Don't have Account? <span class="link-sign-up" routerLink="/sign-up">Sign Up</span>
     </ion-label>
-
   </div>
 </ion-content>

@@ -48,11 +48,11 @@ export class SignUpComponent {
   }
 
   onSuccess(): void {
-    this.router.navigate(['/home', { successfulSignUpMessage: this.successfulSignUpMessage }]);
+    this.router.navigate(['/login', { successfulSignUpMessage: this.successfulSignUpMessage }]);
   }
 
   onError(err: string): void {
-    console.log(`sign up error ${err}`)
+    console.log(`sign up error ${JSON.stringify(err)}`)
   }
 
   ionViewDidLeave(): void {
