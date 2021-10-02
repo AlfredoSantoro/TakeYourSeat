@@ -8,7 +8,7 @@ import {CONSTANTS} from "../../constants";
 })
 export class HomepageComponent {
 
-  readonly toolbarPrefix = CONSTANTS.APP_TITLE + ' ' + CONSTANTS.HOME_PAGE
+  readonly toolbarPrefix = CONSTANTS.APP_TITLE + ' > ' + CONSTANTS.HOME_PAGE
 
   constructor() { }
 
