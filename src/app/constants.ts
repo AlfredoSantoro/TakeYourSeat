@@ -10,6 +10,7 @@ export const CONSTANTS = {
 
   URL: {
     LOGIN: `${environment.API_URL}/login`,
-    SIGN_UP: `${environment.API_URL}/account/sign-up`
+    SIGN_UP: `${environment.API_URL}/account/sign-up`,
+    PROFILE: `${environment.API_URL}/account/me`
   }
 }

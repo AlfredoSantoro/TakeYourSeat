@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {StorageService} from "../../service/storage/storage.service";
+import {LoginService} from "../../service/login/login.service";
+import {MenuController, NavController} from "@ionic/angular";
 
 @Component({
   selector: 'app-menu',
@@ -14,16 +16,22 @@ export class MenuComponent{
     { title: 'Home', url: '', icon: 'library' },
     { title: 'Reservations', url: '', icon: 'bookmark' },
     { title: 'Permissions', url: '', icon: 'accessibility' },
-    { title: 'Profile', url: '', icon: 'person-circle' },
-    { title: 'Logout', url: '', icon: 'log-out' },
+    { title: 'Profile', url: '', icon: 'person-circle' }
   ];
 
-  constructor(private storageService: StorageService) { }
+  constructor(private storageService: StorageService,
+              private navigateRoot: NavController,
+              private menuController: MenuController,
+              private loginService: LoginService) { }
 
   ionDidOpen(): void {
-    this.storageService.get('username').then(r => {
-      this.menuTitle = `Hello ${r}`;
-    })
+    this.menuTitle = `Hello ${this.storageService.get('username')}`
+  }
+
+  logout(): void {
+    this.menuController.close('sesalab-menu')
+    this.loginService.logout()
+    this.navigateRoot.navigateRoot(['/login', { successfulSignUpMessage: 'Successful log-out' }])
   }
 
 }
