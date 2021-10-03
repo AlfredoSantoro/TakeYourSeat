@@ -5,11 +5,15 @@
 .center-view {
   position: absolute;
   left: 50%;
-  top: 20%;
+  top: 45%;
   transform: translate(-49%, -49%);
   width: 90%;
 }
-
+ion-grid {
+  margin-left: auto;
+  margin-right: auto;
+  width: 19em;
+}
 .circle {
   cursor: pointer;
   height: 2.3em;
@@ -19,6 +23,12 @@
   margin-left: auto;
   margin-right: auto;
 }
+.seat {
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+  width: 3.7em;
+}
 
 .label-cont {
   margin-left: auto;
@@ -26,14 +36,10 @@
   width: 3.9em;
 }
 
-ion-list {
-  margin-top: 83%;
-}
-
 .small-circle-green {
   height: 1em;
   width: 1em;
-  background-color: green;
+  background-color: forestgreen;
   border-radius: 50%;
   margin-right: 0.3em;
 }
@@ -41,7 +47,7 @@ ion-list {
 .small-circle-red {
   height: 1em;
   width: 1em;
-  background-color: red;
+  background-color: #e04055;
   border-radius: 50%;
   margin-right: 0.3em;
 }
