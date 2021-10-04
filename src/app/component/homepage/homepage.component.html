@@ -1,77 +1,42 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button color="blue"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      {{toolbarPrefix}}
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <div class="center-view seats">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <img src="assets/seat-available_2.svg" class="seat" alt="not found">
-        </ion-col>
-        <ion-col>
-          <img src="assets/seat-available_2.svg" class="seat" alt="not found">
-        </ion-col>
-        <ion-col>
-          <img src="assets/seat-unavailable_2.svg" class="seat" alt="not found">
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <img src="assets/seat-available_2.svg" class="seat" alt="not found">
-        </ion-col>
-        <ion-col>
-          <img src="assets/seat-available_2.svg" class="seat" alt="not found">
-        </ion-col>
-        <ion-col>
-          <img src="assets/seat-occupied_2.svg" class="seat" alt="not found">
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <img src="assets/seat-available_2.svg" class="seat" alt="not found">
-        </ion-col>
-        <ion-col>
-          <img src="assets/seat-available_2.svg" class="seat" alt="not found">
-        </ion-col>
-        <ion-col>
-          <img src="assets/seat-occupied_2.svg" class="seat" alt="not found">
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <img src="assets/seat-unavailable_2.svg" class="seat" alt="not found">
-        </ion-col>
-        <ion-col>
-          <img src="assets/seat-available_2.svg" class="seat" alt="not found">
-        </ion-col>
-        <ion-col>
-          <img src="assets/seat-unavailable_2.svg" class="seat" alt="not found">
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-    <ion-list>
-      <ion-list-header>
-        Legend
-      </ion-list-header>
-      <ion-item-group>
-        <ion-item><div class="small-circle-green"></div> <ion-label>Available</ion-label></ion-item>
-      </ion-item-group>
-      <ion-item-group>
-        <ion-item><div class="small-circle-red"></div><ion-label>Occupied</ion-label></ion-item>
-      </ion-item-group>
-      <ion-item-group>
-        <ion-item><div class="small-circle-grey"></div><ion-label>Unavailable</ion-label></ion-item>
-      </ion-item-group>
-    </ion-list>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button color="blue"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        {{toolbarPrefix}}
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div class="container">
+    <img src="assets/seat-available_2.svg" class="seat" alt="not found">
+    <img src="assets/seat-available_2.svg" class="seat" alt="not found">
+    <img src="assets/seat-unavailable_2.svg" class="seat" alt="not found">
+    <img src="assets/seat-available_2.svg" class="seat" alt="not found">
+    <img src="assets/seat-available_2.svg" class="seat" alt="not found">
+    <img src="assets/seat-occupied_2.svg" class="seat" alt="not found">
+    <img src="assets/seat-available_2.svg" class="seat" alt="not found">
+    <img src="assets/seat-available_2.svg" class="seat" alt="not found">
+    <img src="assets/seat-occupied_2.svg" class="seat" alt="not found">
+    <img src="assets/seat-unavailable_2.svg" class="seat" alt="not found">
+    <img src="assets/seat-available_2.svg" class="seat" alt="not found">
+    <img src="assets/seat-unavailable_2.svg" class="seat" alt="not found">
+    <img src="assets/seat-unavailable_2.svg" class="seat" alt="not found">
+    <img src="assets/seat-available_2.svg" class="seat" alt="not found">
+    <img src="assets/seat-available_2.svg" class="seat" alt="not found">
+  </div>
+
+  <div class="container-list">
+    <div class="small-circle-green"></div>
+    <label>AVAILABLE</label>
+    <div class="small-circle-grey"></div>
+    <label>UNAVAILABLE</label>
+    <div class="small-circle-red"></div>
+    <label>OCCUPIED</label>
   </div>
 </ion-content>
+
+
 
 
