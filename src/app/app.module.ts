@@ -12,6 +12,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {MenuComponent} from "./component/menu/menu.component";
 import {HomepageComponent} from "./component/homepage/homepage.component";
+import {SeatImageComponent} from "./component/seat-image/seat-image.component";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {HomepageComponent} from "./component/homepage/homepage.component";
     SignUpComponent,
     LoginComponent,
     MenuComponent,
-    HomepageComponent
+    HomepageComponent,
+    SeatImageComponent
   ],
   entryComponents: [],
   imports: [

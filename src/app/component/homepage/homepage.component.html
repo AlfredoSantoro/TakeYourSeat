@@ -10,18 +10,7 @@
     </ion-toolbar>
   </ion-header>
   <div class="container">
-    <img src="assets/seat-available_2.svg" class="seat" alt="not found">
-    <img src="assets/seat-available_2.svg" class="seat" alt="not found">
-    <img src="assets/seat-unavailable_2.svg" class="seat" alt="not found">
-    <img src="assets/seat-available_2.svg" class="seat" alt="not found">
-    <img src="assets/seat-available_2.svg" class="seat" alt="not found">
-    <img src="assets/seat-occupied_2.svg" class="seat" alt="not found">
-    <img src="assets/seat-available_2.svg" class="seat" alt="not found">
-    <img src="assets/seat-available_2.svg" class="seat" alt="not found">
-    <img src="assets/seat-occupied_2.svg" class="seat" alt="not found">
-    <img src="assets/seat-unavailable_2.svg" class="seat" alt="not found">
-    <img src="assets/seat-available_2.svg" class="seat" alt="not found">
-    <img src="assets/seat-unavailable_2.svg" class="seat" alt="not found">
+    <app-seat-image *ngFor="let seat of seats" [assetState]="seat.state"></app-seat-image>
   </div>
 
   <div class="container-list">
