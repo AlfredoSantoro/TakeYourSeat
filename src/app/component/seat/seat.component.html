@@ -1,0 +1,5 @@
+<img *ngIf="state === 'FREE'" src="assets/seat-available_2.svg" (click)="seatOnClick()" class="clickable-seat" alt="not found">
+
+<img *ngIf="state === 'OCCUPIED'" src="assets/seat-occupied_2.svg" class="seat" alt="not found">
+
+<img *ngIf="state === 'UNAVAILABLE'" src="assets/seat-unavailable_2.svg" class="seat" alt="not found">

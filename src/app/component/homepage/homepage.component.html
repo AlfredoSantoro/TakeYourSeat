@@ -10,7 +10,7 @@
     </ion-toolbar>
   </ion-header>
   <div class="container">
-    <app-seat-image *ngFor="let seat of seats" [assetState]="seat.state"></app-seat-image>
+    <app-seat *ngFor="let seat of seats" [state]="seat.state" [seatId]="seat.id" (selectedSeat)="selectedSeatHandler($event)"></app-seat>
   </div>
 
   <div class="container-list">

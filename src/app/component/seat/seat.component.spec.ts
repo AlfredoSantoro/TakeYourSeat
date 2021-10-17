@@ -1,19 +1,19 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {IonicModule} from '@ionic/angular';
 
-import {SeatImageComponent} from './seat-image.component';
+import {SeatComponent} from './seat.component';
 
 describe('SeatImageComponent', () => {
-  let component: SeatImageComponent;
-  let fixture: ComponentFixture<SeatImageComponent>;
+  let component: SeatComponent;
+  let fixture: ComponentFixture<SeatComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SeatImageComponent ],
+      declarations: [ SeatComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SeatImageComponent);
+    fixture = TestBed.createComponent(SeatComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

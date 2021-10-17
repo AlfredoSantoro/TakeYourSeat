@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {CONSTANTS} from "../../constants";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ToastController} from "@ionic/angular";
 import {LoginService} from "../../service/login/login.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserLogin} from "../../interface/UserLogin";
+import {ToastService} from "../../service/toast/toast.service";
 
 @Component({
   selector: 'app-login',
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
               private router: Router,
               private loginService: LoginService,
-              private toastController: ToastController) { }
+              private toastService: ToastService) { }
 
   login() {
     this.hidden = false;
@@ -58,17 +58,10 @@ export class LoginComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(paramMap => {
       this.successfulSignUpMessage = paramMap.get('successfulSignUpMessage')
       if ( this.successfulSignUpMessage !== undefined && this.successfulSignUpMessage !== null ) {
-        this.presentToast(this.successfulSignUpMessage);
+        this.toastService.presentToast(this.successfulSignUpMessage, 3000);
       }
     })
   }
 
-  async presentToast(msg: string) {
-    const toast = await this.toastController.create({
-      message: msg,
-      duration: 2000
-    });
-    await toast.present();
-  }
 
 }
