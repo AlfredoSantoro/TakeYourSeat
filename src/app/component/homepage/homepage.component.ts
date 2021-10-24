@@ -42,22 +42,25 @@ export class HomepageComponent implements OnInit {
   }
 
   selectedSeatHandler(seatState: SeatState): void {
-    const loggedUser = this.storageService.get('username')
-    const reservationDTO: ReservationDTO = {
-      start: new Date().toISOString(),
-      accountId: loggedUser,
-      seatId: seatState.id
-    }
-    this.reservationService.createReservation(reservationDTO).subscribe(
-      () => {
-        console.log('Reservation successfully created')
-        this.setSeatState(seatState.id, AssetState.OCCUPIED)
-        this.onSuccess()
-      },
-      (error: Error) => {
-        this.onError(error.message)
+    this.presentLoading().then(((p) => {
+      const loggedUser = this.storageService.get('username')
+      const reservationDTO: ReservationDTO = {
+        start: new Date().toISOString(),
+        accountId: loggedUser,
+        seatId: seatState.id
       }
-    )
+      this.reservationService.createReservation(reservationDTO).subscribe(
+        () => {
+          console.log('Reservation successfully created')
+          this.setSeatState(seatState.id, AssetState.OCCUPIED)
+          this.onSuccess()
+          p.dismiss()
+        },
+        (error: Error) => {
+          this.onError(error.message)
+        }
+      )
+    }))
   }
 
   onSuccess(): void {
@@ -76,7 +79,6 @@ export class HomepageComponent implements OnInit {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       message: 'Please wait...',
-      duration: 2500
     });
     await loading.present();
     return loading
