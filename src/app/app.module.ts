@@ -13,6 +13,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {MenuComponent} from "./component/menu/menu.component";
 import {HomepageComponent} from "./component/homepage/homepage.component";
 import {SeatComponent} from "./component/seat/seat.component";
+import {ReservationsDetailsComponent} from "./component/reservations-details/reservations-details.component";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {SeatComponent} from "./component/seat/seat.component";
     LoginComponent,
     MenuComponent,
     HomepageComponent,
-    SeatComponent
+    SeatComponent,
+    ReservationsDetailsComponent
   ],
   entryComponents: [],
   imports: [
