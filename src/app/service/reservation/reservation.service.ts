@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {ReservationDTO} from "../../interface/ReservationDTO";
 import {CONSTANTS} from "../../constants";
 import {StorageService} from "../storage/storage.service";
+import {ReservationOnGoing} from "../../interface/ReservationOnGoing";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,15 @@ export class ReservationService {
     console.log(`create new reservation for user #${reservationDTO.accountId}`)
     const token = this.storageService.get("token")
     return this.performReservation(reservationDTO, token)
+  }
+
+  getOngoingUserReservation(): Observable<ReservationOnGoing> {
+    const token = this.storageService.get("token")
+    return this.performGetOnGoingUserReservation(token)
+  }
+
+  private performGetOnGoingUserReservation(token: string): Observable<ReservationOnGoing> {
+    return this.httpClient.get<ReservationOnGoing>(CONSTANTS.URL.RESERVATION_ON_GOING, { headers: {Authorization: `Bearer ${token}`}})
   }
 
   private performReservation(reservation: ReservationDTO, token: string): Observable<unknown> {

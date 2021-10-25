@@ -1,0 +1,24 @@
+.reservation-container {
+  display: grid;
+  grid-template-columns: repeat(2, 35%);
+  grid-template-rows: repeat(4, 40%); // nome posto, data, ora e stato
+  place-items: center;
+  margin-top: 2.3em;
+  margin-bottom: 6em;
+}
+
+ion-label {
+  font-weight: 500;
+}
+
+div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#checkmark {
+  color: red !important;
+}
+
+

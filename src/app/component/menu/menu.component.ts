@@ -14,8 +14,7 @@ export class MenuComponent{
 
   public appPages = [
     { title: 'Home', url: '', icon: 'library' },
-    { title: 'Reservations', url: '', icon: 'bookmark' },
-    { title: 'Permissions', url: '', icon: 'accessibility' },
+    { title: 'Ongoing Reservation', url: '/ongoing-reservation', icon: 'location' },
     { title: 'Profile', url: '', icon: 'person-circle' }
   ];
 
@@ -26,6 +25,11 @@ export class MenuComponent{
 
   ionDidOpen(): void {
     this.menuTitle = `Hello ${this.storageService.get('username')}`
+  }
+
+  menuItemOnClick(url: string): void {
+    this.navigateRoot.navigateRoot([url])
+    this.menuController.close()
   }
 
   logout(): void {

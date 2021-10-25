@@ -4,12 +4,14 @@ import {SignUpComponent} from "./component/sign-up/sign-up.component";
 import {LoginComponent} from "./component/login/login.component";
 import {HomepageComponent} from "./component/homepage/homepage.component";
 import {AuthGuard} from "./guard/auth.guard";
+import {ReservationPageComponent} from "./component/reservation-page/reservation-page.component";
 
 const routes: Routes = [
   {
     path: '', canActivate: [AuthGuard], children: [
       { path: 'homepage', component: HomepageComponent },
-      { path: '', redirectTo: 'homepage', pathMatch: 'full'}
+      { path: '', redirectTo: 'homepage', pathMatch: 'full'},
+      { path: 'ongoing-reservation', component: ReservationPageComponent },
     ]
   },
   { path: 'sign-up', component: SignUpComponent },

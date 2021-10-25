@@ -11,7 +11,7 @@
     <ion-list id="inbox-list">
         <ion-item *ngFor="let item of appPages; let i = index">
           <ion-icon slot="start" [ios]="item.icon + '-outline'" [md]="item.icon + '-sharp'"></ion-icon>
-          <ion-label>{{ item.title }}</ion-label>
+          <ion-label (click)="menuItemOnClick(item.url)">{{ item.title }}</ion-label>
         </ion-item>
       <ion-item (click)="logout()" class="logout-time">
         <ion-icon slot="start" [ios]="'log-out-outline'" [md]="'log-out-sharp'"></ion-icon>

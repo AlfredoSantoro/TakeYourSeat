@@ -1,0 +1,20 @@
+<ion-content>
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button color="blue"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        {{toolbarPrefix}}
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <app-reservations-details *ngIf="isOccupied" [reservationOnGoing]="onGoingReservation"></app-reservations-details>
+
+  <div *ngIf="!isOccupied" class="div-message">
+    <ion-label>No ongoing reservation</ion-label>
+  </div>
+
+</ion-content>

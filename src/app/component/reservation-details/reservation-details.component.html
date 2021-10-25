@@ -1,0 +1,17 @@
+<ion-content>
+  <div class="reservation-container">
+    <ion-icon size="large" name="location-outline"></ion-icon>
+    <ion-label>{{reservationOnGoing.seatName}}</ion-label>
+    <ion-icon size="large" name="calendar-outline"></ion-icon>
+    <ion-label>{{reservationOnGoing.date}}</ion-label>
+    <ion-icon size="large" name="time-outline"></ion-icon>
+    <ion-label>{{reservationOnGoing.startTime}} - {{reservationOnGoing.endTime}}</ion-label>
+    <ion-icon size="large" id="checkmark" name="checkmark-circle-outline"></ion-icon>
+    <ion-label>{{reservationOnGoing.assetState}}</ion-label>
+  </div>
+
+  <div>
+    <ion-button type="submit" color="primary" shape="round" fill="solid">Check in</ion-button>
+  </div>
+
+</ion-content>

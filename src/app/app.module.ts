@@ -13,7 +13,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {MenuComponent} from "./component/menu/menu.component";
 import {HomepageComponent} from "./component/homepage/homepage.component";
 import {SeatComponent} from "./component/seat/seat.component";
-import {ReservationsDetailsComponent} from "./component/reservations-details/reservations-details.component";
+import {ReservationDetailsComponent} from "./component/reservation-details/reservation-details.component";
+import {ReservationPageComponent} from "./component/reservation-page/reservation-page.component";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {ReservationsDetailsComponent} from "./component/reservations-details/res
     MenuComponent,
     HomepageComponent,
     SeatComponent,
-    ReservationsDetailsComponent
+    ReservationDetailsComponent,
+    ReservationPageComponent
   ],
   entryComponents: [],
   imports: [
