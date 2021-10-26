@@ -13,7 +13,7 @@ export class ReservationPageComponent implements OnInit {
   constructor(private reservationService: ReservationService) { }
 
   readonly toolbarPrefix = CONSTANTS.RESERVATION
-  isOccupied: boolean = false
+  isOnGoing: boolean = false
   onGoingReservation: ReservationOnGoing
 
   ngOnInit() {
@@ -23,7 +23,7 @@ export class ReservationPageComponent implements OnInit {
         if ( res !== null )
         {
           this.onGoingReservation = res
-          this.isOccupied = true
+          this.isOnGoing = true
         }
       }, (e) => {
         console.log(`error during get ongoing user reservation --> ${e}`)

@@ -57,6 +57,7 @@ export class HomepageComponent implements OnInit {
           p.dismiss()
         },
         (error: Error) => {
+          p.dismiss()
           this.onError(error.message)
         }
       )

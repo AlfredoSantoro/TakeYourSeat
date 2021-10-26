@@ -11,9 +11,9 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-reservations-details *ngIf="isOccupied" [reservationOnGoing]="onGoingReservation"></app-reservations-details>
+  <app-reservations-details *ngIf="isOnGoing" [reservationOnGoing]="onGoingReservation"></app-reservations-details>
 
-  <div *ngIf="!isOccupied" class="div-message">
+  <div *ngIf="!isOnGoing" class="div-message">
     <ion-label>No ongoing reservation</ion-label>
   </div>
 

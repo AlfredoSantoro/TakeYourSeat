@@ -51,7 +51,10 @@ export class LoginComponent implements OnInit {
   }
 
   onErrorLogin(error: any): void {
+    this.hidden = true;
     console.log(`login error ${JSON.stringify(error)}`)
+    this.toastService.presentToast(error, 3000).then(() =>{
+    })
   }
 
   ngOnInit() {
