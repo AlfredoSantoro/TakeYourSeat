@@ -15,6 +15,7 @@ export const CONSTANTS = {
     PROFILE: `${environment.API_URL}/account/me`,
     SEATS_STATE: `${environment.API_URL}/seats/state`,
     RESERVATION: `${environment.API_URL}/reservations`,
-    RESERVATION_ON_GOING: `${environment.API_URL}/reservations/me`
+    RESERVATION_ON_GOING: `${environment.API_URL}/reservations/me`,
+    CHECK_IN: `${environment.API_URL}/checkin`,
   }
 }
