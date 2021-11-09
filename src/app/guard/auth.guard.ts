@@ -3,7 +3,6 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '
 import {LoginService} from "../service/login/login.service";
 import {StorageService} from "../service/storage/storage.service";
 import {Observable, of} from "rxjs";
-import {map, tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -25,17 +24,10 @@ export class AuthGuard implements CanActivate {
     } else {
       const token = this.storageService.get("token")
       if ( token !== null && token !== undefined ) {
-        return this.loginService.checkToken(token)
-          .pipe(map( res => !!res ),
-            tap( res => {
-              if ( !!res ) {
-                console.log('valid token')
-              } else {
-                console.log('invalid token redirect to login page')
-                this.redirectToLogin();
-              }
-            })
-          )
+        this.loginService.checkToken(token).then((res) => {
+          if ( res ) return of(true)
+          else this.redirectToLogin()
+        })
       } else { this.redirectToLogin(); return of(false) }
     }
   }

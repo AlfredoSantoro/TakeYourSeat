@@ -1,13 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {UserLogin} from "../../interface/UserLogin";
-import {Observable} from "rxjs";
-import {tap} from "rxjs/operators";
-import {ResponseUserLogin} from "../../interface/ResponseUserLogin";
 import {CONSTANTS} from "../../constants";
 import {StorageService} from "../storage/storage.service";
 import {Router} from "@angular/router";
-import {Profile} from "../../interface/Profile";
+import {HTTP, HTTPResponse} from '@ionic-native/http/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -18,34 +15,43 @@ export class LoginService {
 
   constructor(private httpClient: HttpClient,
               private router: Router,
+              private http: HTTP,
               private storageService: StorageService) { }
 
-  login(userLogin: UserLogin): Observable<ResponseUserLogin> {
+  login(userLogin: UserLogin): Promise<string> {
     console.log(`login user > ${userLogin.username}, ${userLogin.password}`)
-    return this.performLogin(userLogin).pipe(tap( (response: ResponseUserLogin) => {
-      console.log(`Successful login with response > ${JSON.stringify(response)}`)
-      this.storageService.set('token', response.token)
-      this.storageService.set('username', response.username)
-      this.storageService.set('accountType', response.accountType)
-      this._isLoggedIn = true
-    }))
+
+    return this.performLogin(userLogin)
+      .then(data => {
+        const response = JSON.parse(data.data)
+        this.storageService.set('token', response.token)
+        this.storageService.set('username', response.username)
+        this.storageService.set('accountType', response.accountType)
+        this._isLoggedIn = true
+        return 'SUCCESS'
+      })
+      .catch(error => {
+        console.log(error.status);
+        console.log(error.error); // error message as string
+        console.log(error.headers);
+        return error.error
+      });
   }
 
-  checkToken(token: string): Observable<Profile> {
-    return new Observable<Profile>( ob =>
-      this.performProfileInformation(token).subscribe(
-        (response: Profile) => {
-          console.log(`Successful check-token with response > ${JSON.stringify(response)}`)
-          this.storageService.set('token', token)
-          this.storageService.set('username', response.username)
-          this.storageService.set('accountType', response.accountType)
-          this._isLoggedIn = true
-          ob.next(response)
-        }, () => {
-          this._isLoggedIn = false;
-          this.storageService.clear();
-          ob.next(undefined);
-        }))
+  checkToken(token: string): Promise<true | false> {
+    return this.performProfileInformation(token).then( response => {
+      console.log(`Successful check-token with response > ${JSON.stringify(response)}`)
+      this.storageService.set('token', response.data.token)
+      this.storageService.set('username', response.data.username)
+      this.storageService.set('accountType', response.data.accountType)
+      this._isLoggedIn = true
+      return true
+      })
+      .catch(error => {
+        this._isLoggedIn = false;
+        this.storageService.clear();
+        return false
+      });
   }
 
   isLoggedIn(): boolean {
@@ -58,11 +64,12 @@ export class LoginService {
     return this.router.navigate(['/login'])
   }
 
-  private performLogin(userLogin: UserLogin): Observable<ResponseUserLogin> {
-    return this.httpClient.post<ResponseUserLogin>(CONSTANTS.URL.LOGIN, userLogin)
+  private performLogin(userLogin: UserLogin): Promise<HTTPResponse> {
+    this.http.setDataSerializer('json');
+    return this.http.post(CONSTANTS.URL.LOGIN, {"username": userLogin.username, "password": userLogin.password}, {"Content-Type": "application/json"})
   }
 
-  private performProfileInformation(token: string): Observable<Profile> {
-    return this.httpClient.get<Profile>(CONSTANTS.URL.PROFILE, { headers: {Authorization: `Bearer ${token}`}, responseType: 'json'})
+  private performProfileInformation(token: string): Promise<HTTPResponse> {
+    return this.http.get(CONSTANTS.URL.PROFILE, {}, {"Content-Type": "application/json", "Authorization": "Bearer " + token})
   }
 }

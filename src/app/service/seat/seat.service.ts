@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {SeatsDTO} from "../../interface/SeatsDTO";
 import {CONSTANTS} from "../../constants";
 import {StorageService} from "../storage/storage.service";
+import {HTTP, HTTPResponse} from "@ionic-native/http/ngx";
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +11,15 @@ import {StorageService} from "../storage/storage.service";
 export class SeatService {
 
   constructor(private httpClient: HttpClient,
+              private http: HTTP,
               private storageService: StorageService) { }
 
-  getSeatsState(): Observable<SeatsDTO[]> {
+  getSeatsState(): Promise<HTTPResponse> {
     const token = this.storageService.get("token")
     return this.performGetSeatState(token)
   }
 
-  private performGetSeatState(token: string): Observable<SeatsDTO[]> {
-    return this.httpClient.get<SeatsDTO[]>(CONSTANTS.URL.SEATS_STATE, { headers: {Authorization: `Bearer ${token}`}, responseType: 'json'})
+  private performGetSeatState(token: string): Promise<HTTPResponse> {
+    return this.http.get(CONSTANTS.URL.SEATS_STATE, {}, {"Content-Type": "application/json", "Authorization": `Bearer ${token}`})
   }
 }

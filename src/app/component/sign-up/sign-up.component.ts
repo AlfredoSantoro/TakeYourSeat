@@ -41,9 +41,9 @@ export class SignUpComponent {
       accountType: 'USER'
     }
     this.signUpService.signUp(createAccount)
-      .subscribe(
+      .then(
         () => this.onSuccess(),
-        (error) => this.onError(error)
+        (error) => this.onError(error.error)
       );
   }
 

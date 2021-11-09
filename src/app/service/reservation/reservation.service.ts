@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
 import {ReservationDTO} from "../../interface/ReservationDTO";
 import {CONSTANTS} from "../../constants";
 import {StorageService} from "../storage/storage.service";
-import {ReservationOnGoing} from "../../interface/ReservationOnGoing";
+import {HTTP, HTTPResponse} from "@ionic-native/http/ngx";
 
 @Injectable({
   providedIn: 'root'
@@ -12,24 +11,26 @@ import {ReservationOnGoing} from "../../interface/ReservationOnGoing";
 export class ReservationService {
 
   constructor(private httpClient: HttpClient,
+              private http: HTTP,
               private storageService: StorageService) { }
 
-  createReservation(reservationDTO: ReservationDTO): Observable<unknown> {
+  createReservation(reservationDTO: ReservationDTO): Promise<any> {
     console.log(`create new reservation for user #${reservationDTO.accountId}`)
     const token = this.storageService.get("token")
     return this.performReservation(reservationDTO, token)
   }
 
-  getOngoingUserReservation(): Observable<ReservationOnGoing> {
+  getOngoingUserReservation(): Promise<any> {
     const token = this.storageService.get("token")
     return this.performGetOnGoingUserReservation(token)
   }
 
-  private performGetOnGoingUserReservation(token: string): Observable<ReservationOnGoing> {
-    return this.httpClient.get<ReservationOnGoing>(CONSTANTS.URL.RESERVATION_ON_GOING, { headers: {Authorization: `Bearer ${token}`}})
+  private performGetOnGoingUserReservation(token: string): Promise<HTTPResponse> {
+    return this.http.get(CONSTANTS.URL.RESERVATION_ON_GOING, {}, {"Content-Type": "application/json", "Authorization": `Bearer ${token}`})
   }
 
-  private performReservation(reservation: ReservationDTO, token: string): Observable<unknown> {
-    return this.httpClient.post(CONSTANTS.URL.RESERVATION, reservation, { headers: {Authorization: `Bearer ${token}`}})
+  private performReservation(reservation: ReservationDTO, token: string): Promise<HTTPResponse> {
+    this.http.setDataSerializer('json');
+    return this.http.post(CONSTANTS.URL.RESERVATION, {"start": reservation.start, "accountId": reservation.accountId, "seatId": reservation.seatId}, {"Content-Type": "application/json", "Authorization": `Bearer ${token}`})
   }
 }

@@ -24,7 +24,7 @@ export class MenuComponent{
               private loginService: LoginService) { }
 
   ionDidOpen(): void {
-    this.menuTitle = `Hello ${this.storageService.get('username')}`
+    `Hello ${this.storageService.get('username')}`
   }
 
   menuItemOnClick(url: string): void {

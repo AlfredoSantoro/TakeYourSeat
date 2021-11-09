@@ -17,12 +17,12 @@ export class ReservationPageComponent implements OnInit {
   onGoingReservation: ReservationOnGoing
 
   ngOnInit() {
-    this.reservationService.getOngoingUserReservation().subscribe(
+    this.reservationService.getOngoingUserReservation().then(
       (res) => {
         console.log(`ongoing reservation is --> ${JSON.stringify(res)}`)
-        if ( res !== null )
+        if ( res.data !== null )
         {
-          this.onGoingReservation = res
+          this.onGoingReservation = JSON.parse(res.data)
           this.isOnGoing = true
         }
       }, (e) => {

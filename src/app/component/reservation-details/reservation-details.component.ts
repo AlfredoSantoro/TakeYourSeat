@@ -22,11 +22,10 @@ export class ReservationDetailsComponent implements OnInit {
       reservationId: this.reservationOnGoing.reservationId,
       nfcTagId: this.reservationOnGoing.seatTagNFC
     }
-    this.checkInService.checkIn(checkInDTO).subscribe(
-      () => {
+    this.checkInService.checkIn(checkInDTO).then(
+      (res) => {
         this.onSuccess()
-      },
-      (error) => {
+      }).catch(error => {
         this.onError(error)
         console.log(`an error occurred during check-in for reservation #${this.reservationOnGoing.reservationId}`, error)
       })
@@ -39,7 +38,7 @@ export class ReservationDetailsComponent implements OnInit {
 
   onError(err: any): void {
     console.log(`check-in error ${JSON.stringify(err)}`)
-    this.toastService.presentToast('Check in error', 4000).then(() =>{
+    this.toastService.presentToast('Check in error ' + err.error, 4000).then(() =>{
     })
   }
 }

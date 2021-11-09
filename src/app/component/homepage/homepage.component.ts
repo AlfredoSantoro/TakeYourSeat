@@ -29,12 +29,13 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
     this.presentLoading().then( (p) => {
-      this.seatService.getSeatsState().subscribe(
+      this.seatService.getSeatsState().then(
         (items) => {
-          this.seats = items
+          this.seats = JSON.parse(items.data)
           p.dismiss()
         },
         (error) => {
+          this.toastService.presentToast("an error occurred during getSeatsState " + JSON.stringify(error), 3000)
           console.log(`an error occurred during getSeatsState ${error}`)
         }
       )
@@ -49,16 +50,15 @@ export class HomepageComponent implements OnInit {
         accountId: loggedUser,
         seatId: seatState.id
       }
-      this.reservationService.createReservation(reservationDTO).subscribe(
-        () => {
+      this.reservationService.createReservation(reservationDTO).then(
+        (res) => {
           console.log('Reservation successfully created')
           this.setSeatState(seatState.id, AssetState.OCCUPIED)
           this.onSuccess()
           p.dismiss()
-        },
-        (error: Error) => {
+        }).catch(error => {
           p.dismiss()
-          this.onError(error.message)
+          this.onError(`${error.error}`)
         }
       )
     }))
@@ -71,7 +71,6 @@ export class HomepageComponent implements OnInit {
   }
 
   onError(err: string): void {
-    console.log(`sign up error ${JSON.stringify(err)}`)
     this.toastService.presentToast(err, 3000).then(() =>{
     })
   }

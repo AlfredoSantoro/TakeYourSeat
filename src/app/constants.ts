@@ -17,5 +17,6 @@ export const CONSTANTS = {
     RESERVATION: `${environment.API_URL}/reservations`,
     RESERVATION_ON_GOING: `${environment.API_URL}/reservations/me`,
     CHECK_IN: `${environment.API_URL}/checkin`,
+    TEST_RESOURCE: `${environment.API_URL}/hello`,
   }
 }

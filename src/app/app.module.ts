@@ -10,11 +10,13 @@ import {SignUpComponent} from './component/sign-up/sign-up.component';
 import {LoginComponent} from "./component/login/login.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
+import {HTTP} from "@ionic-native/http/ngx";
 import {MenuComponent} from "./component/menu/menu.component";
 import {HomepageComponent} from "./component/homepage/homepage.component";
 import {SeatComponent} from "./component/seat/seat.component";
 import {ReservationDetailsComponent} from "./component/reservation-details/reservation-details.component";
 import {ReservationPageComponent} from "./component/reservation-page/reservation-page.component";
+import {NFC} from "@ionic-native/nfc/ngx";
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import {ReservationPageComponent} from "./component/reservation-page/reservation
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, HTTP, NFC],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
