@@ -59,7 +59,7 @@ export class ReservationDetailsComponent implements OnInit {
 
   onError(err: any): void {
     console.log(`check-in error ${JSON.stringify(err)}`)
-    this.toastService.presentToast('Check in error ' + err.error, 4000).then(() =>{
+    this.toastService.presentToast('Error during check-in. Did you scan the correct nfc tag?', 4000).then(() =>{
     })
   }
 

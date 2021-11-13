@@ -86,13 +86,13 @@ export class HomepageComponent implements OnInit {
   }
 
   onSuccess(): void {
-    this.toastService.presentToast("Reservation successfully created. Remember to check in, otherwise" +
+    this.toastService.presentToast("Successful reservation. Remember to check in on time, otherwise" +
       " the reservation will be automatically cancelled.", 5000).then(() => {
     })
   }
 
   onError(err: string): void {
-    this.toastService.presentToast(err, 3000).then(() =>{
+    this.toastService.presentToast('Error during create new reservation. The system does not allow overlapping reservations', 3000).then(() =>{
     })
   }
 

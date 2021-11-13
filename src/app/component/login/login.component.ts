@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       if ( res === 'SUCCESS' ) {
         this.onSuccessLogin()
       } else {
-        this.onErrorLogin("Login error: try again")
+        this.onErrorLogin()
       }
     })
   }
@@ -58,10 +58,9 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  onErrorLogin(error: any): void {
+  onErrorLogin(): void {
     this.hidden = true;
-    console.log(`login error ${JSON.stringify(error)}`)
-    this.toastService.presentToast(`login error -> ${JSON.stringify(error)}`, 3000).then(() =>{
+    this.toastService.presentToast('Error during login. Verify your credentials and check your internet connection', 3000).then(() =>{
     })
   }
 
