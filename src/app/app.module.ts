@@ -17,6 +17,8 @@ import {SeatComponent} from "./component/seat/seat.component";
 import {ReservationDetailsComponent} from "./component/reservation-details/reservation-details.component";
 import {ReservationPageComponent} from "./component/reservation-page/reservation-page.component";
 import {NFC} from "@ionic-native/nfc/ngx";
+import {LocalNotifications} from "@ionic-native/local-notifications/ngx";
+import {NfcModalComponent} from "./modal/nfc-modal/nfc-modal.component";
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import {NFC} from "@ionic-native/nfc/ngx";
     HomepageComponent,
     SeatComponent,
     ReservationDetailsComponent,
-    ReservationPageComponent
+    ReservationPageComponent,
+    NfcModalComponent
   ],
   entryComponents: [],
   imports: [
@@ -37,7 +40,7 @@ import {NFC} from "@ionic-native/nfc/ngx";
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, HTTP, NFC],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, HTTP, NFC, LocalNotifications],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

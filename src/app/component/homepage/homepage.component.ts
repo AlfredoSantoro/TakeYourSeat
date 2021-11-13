@@ -7,8 +7,9 @@ import {ReservationService} from "../../service/reservation/reservation.service"
 import {StorageService} from "../../service/storage/storage.service";
 import {ReservationDTO} from "../../interface/ReservationDTO";
 import {ToastService} from "../../service/toast/toast.service";
-import {LoadingController} from "@ionic/angular";
+import {AlertController, LoadingController} from "@ionic/angular";
 import {AssetState} from "../../enum/AssetState";
+import {DateTime} from "luxon";
 
 @Component({
   selector: 'app-homepage',
@@ -22,6 +23,7 @@ export class HomepageComponent implements OnInit {
   seats: SeatsDTO[]
 
   constructor(private seatService: SeatService,
+              private alertCtrl: AlertController,
               private toastService: ToastService,
               private loadingController: LoadingController,
               private reservationService: ReservationService,
@@ -42,11 +44,30 @@ export class HomepageComponent implements OnInit {
     })
   }
 
+  async showAlert(seatState: SeatState, name: string) {
+    const alert = await this.alertCtrl.create({
+      header: 'Alert',
+      message: `Would you like to book the ${name} seat?`,
+      buttons: [
+        {
+          text: 'Yes',
+          handler: () => {
+            this.selectedSeatHandler(seatState)
+          }
+        },
+        {
+          text: 'No'
+        }
+      ]
+    })
+    await alert.present();
+  }
+
   selectedSeatHandler(seatState: SeatState): void {
     this.presentLoading().then(((p) => {
       const loggedUser = this.storageService.get('username')
       const reservationDTO: ReservationDTO = {
-        start: new Date().toISOString(),
+        start: DateTime.now().toISO(),
         accountId: loggedUser,
         seatId: seatState.id
       }

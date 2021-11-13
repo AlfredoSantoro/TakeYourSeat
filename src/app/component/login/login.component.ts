@@ -6,8 +6,6 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserLogin} from "../../interface/UserLogin";
 import {ToastService} from "../../service/toast/toast.service";
 import {HTTP} from '@ionic-native/http/ngx'
-import {NFC} from '@ionic-native/nfc/ngx';
-
 
 @Component({
   selector: 'app-login',
@@ -24,6 +22,7 @@ export class LoginComponent implements OnInit {
 
   readonly loginWelcome = CONSTANTS.LOGIN_WELCOME
   readonly toolbarPrefix = CONSTANTS.APP_TITLE
+  readonly version = CONSTANTS.VERSION
 
   username: string;
   password: string;
@@ -35,7 +34,6 @@ export class LoginComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
               private router: Router,
               private http: HTTP,
-              private nfc: NFC,
               private loginService: LoginService,
               private toastService: ToastService) { }
 
@@ -68,7 +66,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe(paramMap => {
+      this.activatedRoute.paramMap.subscribe(paramMap => {
       this.successfulSignUpMessage = paramMap.get('successfulSignUpMessage')
       if ( this.successfulSignUpMessage !== undefined && this.successfulSignUpMessage !== null ) {
         this.toastService.presentToast(this.successfulSignUpMessage, 3000);
@@ -81,33 +79,17 @@ export class LoginComponent implements OnInit {
     this.http.get(CONSTANTS.URL.TEST_RESOURCE, {}, {})
       .then(data => {
         console.log('success')
-        this.toastService.presentToast(`The connection is alive`, 5000);
+        this.toastService.presentToast(`The connection is alive`, 2000);
         console.log(data.status);
         console.log(data.data); // data received by server
         console.log(data.headers);
 
       })
       .catch(error => {
-        this.toastService.presentToast(`not alive connection error status: ${error.status}, error message: ${error.error}`, 5000);
+        this.toastService.presentToast(`not alive connection error status: ${error.status}, error message: ${error.error}`, 3000);
         console.log(error.status);
         console.log(error.error); // error message as string
         console.log(error.headers);
       });
-  }
-
-  testNFCTag() {
-    // READ NFC TAG ANDROID
-    // Once the reader mode is enabled, any tags that are scanned are sent to the subscriber
-    const flags = this.nfc.FLAG_READER_NFC_A | this.nfc.FLAG_READER_NFC_V;
-    const readerMode = this.nfc.readerMode(flags)
-    this.toastService.presentToast(`NFC READER MODE ACTIVATED`, 2000);
-    readerMode.subscribe(
-      (tag) => {
-        this.toastService.presentToast(`NFC TAG SCANNED SUCCESSFULLY`, 3000);
-      },
-      (err) => {
-        this.toastService.presentToast(`ERROR READING TAG: ${err}`, 3000);
-      }
-    )
   }
 }

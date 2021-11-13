@@ -9,17 +9,17 @@
       </ion-title>
     </ion-toolbar>
   </ion-header>
-  <div class="container">
-    <app-seat *ngFor="let seat of seats" [state]="seat.state" [seatId]="seat.id" (selectedSeat)="selectedSeatHandler($event)"></app-seat>
-  </div>
-
   <div class="container-list">
     <div class="small-circle-green"></div>
-    <label>AVAILABLE</label>
+    <label>SEAT AVAILABLE</label>
     <div class="small-circle-grey"></div>
-    <label>UNAVAILABLE</label>
+    <label>SEAT UNAVAILABLE</label>
     <div class="small-circle-red"></div>
-    <label>OCCUPIED</label>
+    <label>SEAT OCCUPIED</label>
+  </div>
+
+  <div class="container">
+    <app-seat *ngFor="let seat of seats" [state]="seat.state" [seatId]="seat.id" (selectedSeat)="showAlert($event, seat.name)"></app-seat>
   </div>
 </ion-content>
 

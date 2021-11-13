@@ -1,7 +1,9 @@
 import {environment} from "../environments/environment";
 
+
 export const CONSTANTS = {
   ENVIRONMENT: environment,
+  VERSION: environment.VERSION,
 
   APP_TITLE: "SESA Lab",
   HOME_PAGE: "HOME",

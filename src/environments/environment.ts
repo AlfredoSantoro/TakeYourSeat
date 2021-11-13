@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://sesalab-api.azurewebsites.net/api/v1'
+  API_URL: 'https://sesalab-api.azurewebsites.net/api/v1',
+  VERSION: '0.0.7.1'
 };
 
 /*

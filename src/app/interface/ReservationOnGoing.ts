@@ -2,8 +2,7 @@
 export interface ReservationOnGoing {
   reservationId: number,
   seatName: string,
-  date: string,
-  startTime: string,
-  endTime: string,
+  start: string,
+  end: string,
   seatTagNFC: string
 }

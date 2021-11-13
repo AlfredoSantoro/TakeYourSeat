@@ -3,15 +3,15 @@
     <ion-icon size="large" name="location-outline"></ion-icon>
     <ion-label>{{reservationOnGoing.seatName}}</ion-label>
     <ion-icon size="large" name="calendar-outline"></ion-icon>
-    <ion-label>{{reservationOnGoing.date}}</ion-label>
+    <ion-label>{{reservationDateFormatted}}</ion-label>
     <ion-icon size="large" name="time-outline"></ion-icon>
-    <ion-label>{{reservationOnGoing.startTime}} - {{reservationOnGoing.endTime}}</ion-label>
+    <ion-label>{{reservationStartTimeFormatted}} - {{reservationEndTimeFormatted}}</ion-label>
     <ion-icon size="large" id="checkmark" name="checkmark-circle-outline"></ion-icon>
     <ion-label>OCCUPIED</ion-label>
   </div>
 
   <div>
-    <ion-button type="submit" color="primary" shape="round" (click)="checkIn()" fill="solid">Check in</ion-button>
+    <ion-button type="submit" color="primary" shape="round" (click)="openNfcModal()" fill="solid">Check in</ion-button>
   </div>
 
 </ion-content>
