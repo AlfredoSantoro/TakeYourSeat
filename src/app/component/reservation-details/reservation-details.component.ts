@@ -42,18 +42,18 @@ export class ReservationDetailsComponent implements OnInit {
   checkIn(checkInDTO: CheckInDTO): void {
     this.checkInService.checkIn(checkInDTO).then(
       (res) => {
+        const reminder = new Date(new Date().getTime() + 600000)
         const checkInValidUntil = DateTime.now().plus(Duration.fromMillis(this.checkInFrequencyInMillisecond))
-        const notificationDate = checkInValidUntil.minus(Duration.fromMillis(this.checkInReminder))
-        this.onSuccess(checkInValidUntil.hour, checkInValidUntil.minute, notificationDate.hour,notificationDate.minute)
-        this.scheduleCheckInReminder(notificationDate)
+        this.onSuccess(checkInValidUntil.hour, checkInValidUntil.minute)
+        this.scheduleCheckInReminder(reminder)
       }).catch(error => {
         this.onError(error)
         console.log(`an error occurred during check-in for reservation #${this.reservationOnGoing.reservationId}`, error)
       })
   }
 
-  onSuccess(hour: number, minutes: number, notificationHour: number, notificationMinutes: number): void {
-    this.toastService.presentToast(`Check in valid until ${hour}:${minutes}. You will receive a reminder notification at ${notificationHour}:${notificationMinutes}`, 2500).then(() => {
+  onSuccess(hour: number, minutes: number): void {
+    this.toastService.presentToast(`Check in valid until ${hour}:${minutes}. You will receive a reminder notification 5 minutes before the check-in deadline`, 5000).then(() => {
     })
   }
 
@@ -63,12 +63,12 @@ export class ReservationDetailsComponent implements OnInit {
     })
   }
 
-  scheduleCheckInReminder(at: DateTime) {
+  scheduleCheckInReminder(reminder: Date) {
     this.localNotifications.schedule({
       title: 'Check-in Reminder',
       text: 'Check in if you have not already done so, otherwise your seat will be available',
       trigger: {
-        at: new Date(at.year, at.month, at.day, at.hour, at.minute, at.second, at.millisecond)
+        at: reminder
       }
     })
   }
