@@ -14,8 +14,7 @@ export class MenuComponent{
 
   public appPages = [
     { title: 'Home', url: '', icon: 'library' },
-    { title: 'Ongoing Reservation', url: '/ongoing-reservation', icon: 'location' },
-    { title: 'Profile', url: '', icon: 'person-circle' }
+    { title: 'Ongoing Reservation', url: '/ongoing-reservation', icon: 'location' }
   ];
 
   constructor(private storageService: StorageService,
