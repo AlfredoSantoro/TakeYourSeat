@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   API_URL: 'https://sesalab-api.azurewebsites.net/api/v1',
-  VERSION: '1.0.1'
+  VERSION: '1.1'
 };
 
 /*

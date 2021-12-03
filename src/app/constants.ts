@@ -5,11 +5,11 @@ export const CONSTANTS = {
   ENVIRONMENT: environment,
   VERSION: environment.VERSION,
 
-  APP_TITLE: "SESA Lab",
+  APP_TITLE: "TakeYourSeat",
   HOME_PAGE: "HOME",
   RESERVATION: "RESERVATION",
 
-  LOGIN_WELCOME: "Welcome to the SESA Lab app, which is essential for using the SESA lab at the University of Salerno.",
+  LOGIN_WELCOME: "Welcome to the TakeYourSeat, a cross-platform mobile application for a research laboratory of the University of Salerno",
 
   URL: {
     LOGIN: `${environment.API_URL}/login`,
